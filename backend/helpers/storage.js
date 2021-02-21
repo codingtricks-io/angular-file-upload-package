@@ -1,8 +1,14 @@
 const multer = require('multer');
 
+const FILE_TYPE_MAP = {
+    'image/png': 'png',
+    'image/jpeg': 'jpeg',
+    'image/jpg': 'jpg',
+}
+
 const diskStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/images')
+        cb(null, '/public/images')
     },
     filename: (req, file, cb) => {
         const mimeType = file.mimetype.split('/');
