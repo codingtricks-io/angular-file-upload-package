@@ -8,8 +8,13 @@ require('dotenv').config();
 
 const app = express();
 
+const profileRoutes = require('./routes/profiles');
+
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use('/public/images', express.static(__dirname + '/public/images'));
+app.use('/api/v1/profiles', profileRoutes);
 
 const port = process.env.PORT || 3000;
 
